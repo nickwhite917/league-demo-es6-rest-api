@@ -9,6 +9,11 @@ router.get('/health-check', (req, res) =>
   res.send('OK')
 );
 
+/** GET /echo - Check service health with an echo */
+router.all('/echo', (req, res) =>
+  res.json(req.body)
+);
+
 // mount user routes at /users
 router.use('/users', userRoutes);
 

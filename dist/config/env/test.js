@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
   env: 'test',
   jwtSecret: '0a6b944d-d2fb-46fc-a85e-0295c986cd9f',
-  db: 'mongodb://localhost/express-mongoose-es6-rest-api-test',
+  db: 'mongodb://localhost/league-demo-es6-rest-api-test',
   port: 3000
 };
 module.exports = exports['default'];

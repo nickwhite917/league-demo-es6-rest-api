@@ -27,7 +27,20 @@ function get(req, res) {
 function create(req, res, next) {
   const user = new User({
     username: req.body.username,
-    mobileNumber: req.body.mobileNumber
+    mobileNumber: req.body.mobileNumber,
+    profile: {
+      age: req.body.profile.age,
+      gender: req.body.profile.gender,
+      religion: req.body.profile.religion,
+      location: req.body.profile.location
+    },
+    preferences: {
+      gender: req.body.preferences.gender,
+      ageHigh: req.body.preferences.ageHigh,
+      ageLow: req.body.preferences.ageLow,
+      religion: req.body.preferences.religion,
+      distance: req.body.preferences.distance
+    }
   });
 
   user.saveAsync()
@@ -46,6 +59,20 @@ function update(req, res, next) {
   user.username = req.body.username;
   user.mobileNumber = req.body.mobileNumber;
 
+  user.profile = {
+    age: req.body.profile.age,
+    gender: req.body.profile.gender,
+    religion: req.body.profile.religion,
+    location: req.body.profile.location
+  };
+  user.preferences = {
+    gender: req.body.preferences.gender,
+    ageHigh: req.body.preferences.ageHigh,
+    ageLow: req.body.preferences.ageLow,
+    religion: req.body.preferences.religion,
+    distance: req.body.preferences.distance
+  };
+
   user.saveAsync()
     .then((savedUser) => res.json(savedUser))
     .error((e) => next(e));
@@ -59,7 +86,7 @@ function update(req, res, next) {
  */
 function list(req, res, next) {
   const { limit = 50, skip = 0 } = req.query;
-  User.list({ limit, skip }).then((users) =>	res.json(users))
+  User.list({ limit, skip }).then((users) => res.json(users))
     .error((e) => next(e));
 }
 

@@ -25,6 +25,11 @@ router.get('/health-check', function (req, res) {
   return res.send('OK');
 });
 
+/** GET /echo - Check service health with an echo */
+router.all('/echo', function (req, res) {
+  return res.json(req.body);
+});
+
 // mount user routes at /users
 router.use('/users', _user2.default);
 

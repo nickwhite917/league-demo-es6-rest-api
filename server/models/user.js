@@ -16,11 +16,52 @@ const UserSchema = new mongoose.Schema({
     required: true,
     match: [/^[1-9][0-9]{9}$/, 'The value of path {PATH} ({VALUE}) is not a valid mobile number.']
   },
+  profile: {
+    age: {
+      type: Number,
+      required: true
+    },
+    gender: {
+      type: String,
+      required: true
+    },
+    religion: {
+      type: String,
+      required: true
+    },
+    location: {
+      type: {},
+      required: true
+    }
+  },
+  preferences: {
+    gender: {
+      type: {},
+      required: true
+    },
+    ageHigh: {
+      type: Number,
+      required: true
+    },
+    ageLow: {
+      type: Number,
+      required: true
+    },
+    religion: {
+      type: String,
+      required: true
+    },
+    distance: {
+      type: Number,
+      required: true
+    }
+  },
   createdAt: {
     type: Date,
     default: Date.now
   }
 });
+
 
 /**
  * Add your

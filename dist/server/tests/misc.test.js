@@ -51,7 +51,7 @@ describe('## Misc', function () {
       (0, _supertestAsPromised2.default)(_index2.default).post('/api/users').send({
         mobileNumber: '1234567890'
       }).expect(_httpStatus2.default.BAD_REQUEST).then(function (res) {
-        (0, _chai.expect)(res.body.message).to.equal('"username" is required');
+        (0, _chai.expect)(res.body.message).to.contain('"username" is required');
         done();
       });
     });

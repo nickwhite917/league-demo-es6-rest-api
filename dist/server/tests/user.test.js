@@ -22,8 +22,23 @@ _chai2.default.config.includeStack = true;
 
 describe('## User APIs', function () {
   var user = {
-    username: 'KK123',
-    mobileNumber: '1234567890'
+    username: 'Nick123',
+    mobileNumber: '1234567890',
+    profile: {
+      age: 23,
+      gender: 'Male',
+      religion: 'Jewish',
+      location: {
+        coordinates: [100, 150]
+      }
+    },
+    preferences: {
+      gender: 'Female',
+      ageHigh: 40,
+      ageLow: 20,
+      religion: 'Jewish',
+      distance: 20
+    }
   };
 
   describe('# POST /api/users', function () {
@@ -31,6 +46,8 @@ describe('## User APIs', function () {
       (0, _supertestAsPromised2.default)(_index2.default).post('/api/users').send(user).expect(_httpStatus2.default.OK).then(function (res) {
         (0, _chai.expect)(res.body.username).to.equal(user.username);
         (0, _chai.expect)(res.body.mobileNumber).to.equal(user.mobileNumber);
+        (0, _chai.expect)(res.body.profile).to.equal(user.profile);
+        (0, _chai.expect)(res.body.preferences).to.equal(user.preferences);
         user = res.body;
         done();
       });
@@ -42,6 +59,8 @@ describe('## User APIs', function () {
       (0, _supertestAsPromised2.default)(_index2.default).get('/api/users/' + user._id).expect(_httpStatus2.default.OK).then(function (res) {
         (0, _chai.expect)(res.body.username).to.equal(user.username);
         (0, _chai.expect)(res.body.mobileNumber).to.equal(user.mobileNumber);
+        (0, _chai.expect)(res.body.profile).to.equal(user.profile);
+        (0, _chai.expect)(res.body.preferences).to.equal(user.preferences);
         done();
       });
     });
@@ -56,10 +75,12 @@ describe('## User APIs', function () {
 
   describe('# PUT /api/users/:userId', function () {
     it('should update user details', function (done) {
-      user.username = 'KK';
+      user.username = 'Nick12345';
       (0, _supertestAsPromised2.default)(_index2.default).put('/api/users/' + user._id).send(user).expect(_httpStatus2.default.OK).then(function (res) {
-        (0, _chai.expect)(res.body.username).to.equal('KK');
+        (0, _chai.expect)(res.body.username).to.equal('Nick12345');
         (0, _chai.expect)(res.body.mobileNumber).to.equal(user.mobileNumber);
+        (0, _chai.expect)(res.body.profile).to.equal(user.profile);
+        (0, _chai.expect)(res.body.preferences).to.equal(user.preferences);
         done();
       });
     });
@@ -77,7 +98,7 @@ describe('## User APIs', function () {
   describe('# DELETE /api/users/', function () {
     it('should delete user', function (done) {
       (0, _supertestAsPromised2.default)(_index2.default).delete('/api/users/' + user._id).expect(_httpStatus2.default.OK).then(function (res) {
-        (0, _chai.expect)(res.body.username).to.equal('KK');
+        (0, _chai.expect)(res.body.username).to.equal('Nick12345');
         (0, _chai.expect)(res.body.mobileNumber).to.equal(user.mobileNumber);
         done();
       });

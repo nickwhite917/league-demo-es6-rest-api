@@ -15,7 +15,11 @@ exports.default = {
   createUser: {
     body: {
       username: _joi2.default.string().required(),
-      mobileNumber: _joi2.default.string().regex(/^[1-9][0-9]{9}$/).required()
+      mobileNumber: _joi2.default.string().regex(/^[1-9][0-9]{9}$/).required(),
+
+      profile: {
+        age: _joi2.default.number().integer().min(18).max(100).required()
+      }
     }
   },
 

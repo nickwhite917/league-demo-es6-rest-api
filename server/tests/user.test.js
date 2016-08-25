@@ -8,8 +8,23 @@ chai.config.includeStack = true;
 
 describe('## User APIs', () => {
   let user = {
-    username: 'KK123',
-    mobileNumber: '1234567890'
+    username: 'Nick123',
+    mobileNumber: '1234567890',
+    profile: {
+      age: 23,
+      gender: 'Male',
+      religion: 'Jewish',
+      location: {
+        coordinates: [100, 150]
+      }
+    },
+    preferences: {
+      gender: 'Female',
+      ageHigh: 40,
+      ageLow: 20,
+      religion: 'Jewish',
+      distance: 20
+    }
   };
 
   describe('# POST /api/users', () => {
@@ -21,6 +36,8 @@ describe('## User APIs', () => {
         .then(res => {
           expect(res.body.username).to.equal(user.username);
           expect(res.body.mobileNumber).to.equal(user.mobileNumber);
+          expect(res.body.profile).to.equal(user.profile);
+          expect(res.body.preferences).to.equal(user.preferences);
           user = res.body;
           done();
         });
@@ -35,6 +52,8 @@ describe('## User APIs', () => {
         .then(res => {
           expect(res.body.username).to.equal(user.username);
           expect(res.body.mobileNumber).to.equal(user.mobileNumber);
+          expect(res.body.profile).to.equal(user.profile);
+          expect(res.body.preferences).to.equal(user.preferences);
           done();
         });
     });
@@ -52,14 +71,16 @@ describe('## User APIs', () => {
 
   describe('# PUT /api/users/:userId', () => {
     it('should update user details', (done) => {
-      user.username = 'KK';
+      user.username = 'Nick12345';
       request(app)
         .put(`/api/users/${user._id}`)
         .send(user)
         .expect(httpStatus.OK)
         .then(res => {
-          expect(res.body.username).to.equal('KK');
+          expect(res.body.username).to.equal('Nick12345');
           expect(res.body.mobileNumber).to.equal(user.mobileNumber);
+          expect(res.body.profile).to.equal(user.profile);
+          expect(res.body.preferences).to.equal(user.preferences);
           done();
         });
     });
@@ -83,7 +104,7 @@ describe('## User APIs', () => {
         .delete(`/api/users/${user._id}`)
         .expect(httpStatus.OK)
         .then(res => {
-          expect(res.body.username).to.equal('KK');
+          expect(res.body.username).to.equal('Nick12345');
           expect(res.body.mobileNumber).to.equal(user.mobileNumber);
           done();
         });

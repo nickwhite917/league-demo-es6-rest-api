@@ -39,7 +39,20 @@ function get(req, res) {
 function create(req, res, next) {
   var user = new _user2.default({
     username: req.body.username,
-    mobileNumber: req.body.mobileNumber
+    mobileNumber: req.body.mobileNumber,
+    profile: {
+      age: req.body.profile.age,
+      gender: req.body.profile.gender,
+      religion: req.body.profile.religion,
+      location: req.body.profile.location
+    },
+    preferences: {
+      gender: req.body.preferences.gender,
+      ageHigh: req.body.preferences.ageHigh,
+      ageLow: req.body.preferences.ageLow,
+      religion: req.body.preferences.religion,
+      distance: req.body.preferences.distance
+    }
   });
 
   user.saveAsync().then(function (savedUser) {
@@ -59,6 +72,20 @@ function update(req, res, next) {
   var user = req.user;
   user.username = req.body.username;
   user.mobileNumber = req.body.mobileNumber;
+
+  user.profile = {
+    age: req.body.profile.age,
+    gender: req.body.profile.gender,
+    religion: req.body.profile.religion,
+    location: req.body.profile.location
+  };
+  user.preferences = {
+    gender: req.body.preferences.gender,
+    ageHigh: req.body.preferences.ageHigh,
+    ageLow: req.body.preferences.ageLow,
+    religion: req.body.preferences.religion,
+    distance: req.body.preferences.distance
+  };
 
   user.saveAsync().then(function (savedUser) {
     return res.json(savedUser);

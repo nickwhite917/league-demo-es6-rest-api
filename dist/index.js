@@ -31,7 +31,7 @@ _mongoose2.default.connection.on('error', function () {
   throw new Error('unable to connect to database: ' + _env2.default.db);
 });
 
-var debug = require('debug')('express-mongoose-es6-rest-api:index');
+var debug = require('debug')('league-demo-es6-rest-api:index');
 
 // listen on port config.port
 _express2.default.listen(_env2.default.port, function () {
