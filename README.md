@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/nickwhite917/league-demo-es6-rest-api.svg?branch=master)](https://travis-ci.org/nickwhite917/league-demo-es6-rest-api)
 ## Overview
 
 This is a REST API in Node.js using ES6 and Express with Code Coverage and JWT Authentication. Follows [Airbnb's Javascript style guide](https://github.com/airbnb/javascript).
