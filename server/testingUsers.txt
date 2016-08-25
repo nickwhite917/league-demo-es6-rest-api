@@ -1,0 +1,141 @@
+  // const userRich = {
+  //     "username" : "Rich",
+  //     "mobileNumber" : "1234567890",
+  //     "preferences" : {
+  //         "gender" : "Female",
+  //         "ageHigh" : 30,
+  //         "ageLow" : 20,
+  //         "religion" : "None",
+  //         "distance" : 20
+  //     },
+  //     "profile" : {
+  //         "age" : 55,
+  //         "gender" : "Male",
+  //         "religion" : "None",
+  //         "location" : {
+  //             "coordinates" : [ 
+  //                 "100", 
+  //                 "150"
+  //             ]
+  //         }
+  //     }
+  // };
+
+  // const userLinda = {
+  //     "username" : "Linda",
+  //     "mobileNumber" : "1234567890",
+  //     "preferences" : {
+  //         "gender" : "Female",
+  //         "ageHigh" : 30,
+  //         "ageLow" : 20,
+  //         "religion" : "None",
+  //         "distance" : 20
+  //     },
+  //     "profile" : {
+  //         "age" : 56,
+  //         "gender" : "Female",
+  //         "religion" : "Christian",
+  //         "location" : {
+  //             "coordinates" : [ 
+  //                 "100", 
+  //                 "150"
+  //             ]
+  //         }
+  //     }
+  // };
+
+  // const userEric = {
+  //     "username" : "Eric",
+  //     "mobileNumber" : "1234567890",
+  //     "createdAt" : ISODate("2016-08-25T19:36:38.154Z"),
+  //     "preferences" : {
+  //         "gender" : "Female",
+  //         "ageHigh" : 30,
+  //         "ageLow" : 20,
+  //         "religion" : "None",
+  //         "distance" : 20
+  //     },
+  //     "profile" : {
+  //         "age" : 23,
+  //         "gender" : "Male",
+  //         "religion" : "Christian",
+  //         "location" : {
+  //             "coordinates" : [ 
+  //                 "100", 
+  //                 "150"
+  //             ]
+  //         }
+  //     }
+  // };
+
+  // const userJulie = {
+  //     "username" : "Julie",
+  //     "mobileNumber" : "1234567890",
+  //     "createdAt" : ISODate("2016-08-25T19:36:50.300Z"),
+  //     "preferences" : {
+  //         "gender" : "Female",
+  //         "ageHigh" : 30,
+  //         "ageLow" : 20,
+  //         "religion" : "None",
+  //         "distance" : 20
+  //     },
+  //     "profile" : {
+  //         "age" : 23,
+  //         "gender" : "Female",
+  //         "religion" : "Christian",
+  //         "location" : {
+  //             "coordinates" : [ 
+  //                 "100", 
+  //                 "150"
+  //             ]
+  //         }
+  //     }
+  // };
+
+  // const userNobody = {
+  //     "username" : "Nobody Likes Me",
+  //     "mobileNumber" : "1234567890",
+  //     "createdAt" : ISODate("2016-08-25T19:37:05.408Z"),
+  //     "preferences" : {
+  //         "gender" : "Female",
+  //         "ageHigh" : 30,
+  //         "ageLow" : 20,
+  //         "religion" : "None",
+  //         "distance" : 20
+  //     },
+  //     "profile" : {
+  //         "age" : 55,
+  //         "gender" : "Male",
+  //         "religion" : "Christian",
+  //         "location" : {
+  //             "coordinates" : [ 
+  //                 "100", 
+  //                 "150"
+  //             ]
+  //         }
+  //     }
+  // };
+
+  // const userTori = {
+  //     "username" : "Tori",
+  //     "mobileNumber" : "1234567890",
+  //     "createdAt" : ISODate("2016-08-25T19:37:28.845Z"),
+  //     "preferences" : {
+  //         "gender" : "Female",
+  //         "ageHigh" : 30,
+  //         "ageLow" : 20,
+  //         "religion" : "None",
+  //         "distance" : 20
+  //     },
+  //     "profile" : {
+  //         "age" : 23,
+  //         "gender" : "Female",
+  //         "religion" : "None",
+  //         "location" : {
+  //             "coordinates" : [ 
+  //                 "100", 
+  //                 "150"
+  //             ]
+  //         }
+  //     }
+  // };

@@ -8,7 +8,7 @@ chai.config.includeStack = true;
 
 describe('## User APIs', () => {
   let user = {
-    username: 'Nick123',
+    username: 'Nick',
     mobileNumber: '1234567890',
     profile: {
       age: 23,
@@ -36,12 +36,12 @@ describe('## User APIs', () => {
         .then(res => {
           expect(res.body.username).to.equal(user.username);
           expect(res.body.mobileNumber).to.equal(user.mobileNumber);
-
+          // Profile
           expect(res.body.profile.age).to.equal(user.profile.age);
           expect(res.body.profile.gender).to.equal(user.profile.gender);
           expect(res.body.profile.religion).to.equal(user.profile.religion);
           expect(res.body.profile.location.toString()).to.equal(user.profile.location.toString());
-
+          // Preferences
           expect(res.body.preferences.gender).to.equal(user.preferences.gender);
           expect(res.body.preferences.ageHigh).to.equal(user.preferences.ageHigh);
           expect(res.body.preferences.ageLow).to.equal(user.preferences.ageLow);
@@ -62,12 +62,12 @@ describe('## User APIs', () => {
         .then(res => {
           expect(res.body.username).to.equal(user.username);
           expect(res.body.mobileNumber).to.equal(user.mobileNumber);
-          
+          // Profile
           expect(res.body.profile.age).to.equal(user.profile.age);
           expect(res.body.profile.gender).to.equal(user.profile.gender);
           expect(res.body.profile.religion).to.equal(user.profile.religion);
           expect(res.body.profile.location.toString()).to.equal(user.profile.location.toString());
-
+          // Preferences
           expect(res.body.preferences.gender).to.equal(user.preferences.gender);
           expect(res.body.preferences.ageHigh).to.equal(user.preferences.ageHigh);
           expect(res.body.preferences.ageLow).to.equal(user.preferences.ageLow);
@@ -90,20 +90,20 @@ describe('## User APIs', () => {
 
   describe('# PUT /api/users/:userId', () => {
     it('should update user details', (done) => {
-      user.username = 'Nick12345';
+      user.username = 'Nick 2';
       request(app)
         .put(`/api/users/${user._id}`)
         .send(user)
         .expect(httpStatus.OK)
         .then(res => {
-          expect(res.body.username).to.equal('Nick12345');
+          expect(res.body.username).to.equal('Nick 2');
           expect(res.body.mobileNumber).to.equal(user.mobileNumber);
-          
+          // Profile
           expect(res.body.profile.age).to.equal(user.profile.age);
           expect(res.body.profile.gender).to.equal(user.profile.gender);
           expect(res.body.profile.religion).to.equal(user.profile.religion);
           expect(res.body.profile.location.toString()).to.equal(user.profile.location.toString());
-
+          // Preferences
           expect(res.body.preferences.gender).to.equal(user.preferences.gender);
           expect(res.body.preferences.ageHigh).to.equal(user.preferences.ageHigh);
           expect(res.body.preferences.ageLow).to.equal(user.preferences.ageLow);
@@ -133,7 +133,7 @@ describe('## User APIs', () => {
         .delete(`/api/users/${user._id}`)
         .expect(httpStatus.OK)
         .then(res => {
-          expect(res.body.username).to.equal('Nick12345');
+          expect(res.body.username).to.equal('Nick 2');
           expect(res.body.mobileNumber).to.equal(user.mobileNumber);
           done();
         });

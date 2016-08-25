@@ -16,6 +16,10 @@ var _auth = require('./auth');
 
 var _auth2 = _interopRequireDefault(_auth);
 
+var _match = require('./match');
+
+var _match2 = _interopRequireDefault(_match);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = _express2.default.Router(); // eslint-disable-line new-cap
@@ -32,6 +36,9 @@ router.all('/echo', function (req, res) {
 
 // mount user routes at /users
 router.use('/users', _user2.default);
+
+// mount user routes at /users
+router.use('/match', _match2.default);
 
 // mount auth routes at /auth
 router.use('/auth', _auth2.default);

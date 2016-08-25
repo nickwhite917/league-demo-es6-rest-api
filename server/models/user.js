@@ -108,6 +108,29 @@ UserSchema.statics = {
       .skip(skip)
       .limit(limit)
       .execAsync();
+  },
+
+  /**
+   * List users in descending order of 'createdAt' timestamp.
+   * @param {number} skip - Number of users to be skipped.
+   * @param {number} limit - Limit number of users to be returned.
+   * @returns {Promise<User[]>}
+   */
+  listMatches({ limit = 5 } = { }, user) {
+    return this
+      .find()
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .where('profile.age').gte(user.preferences.ageLow)
+      .where('_id').ne(user.id)
+      .where('profile.gender').equals(user.preferences.gender)
+      .where('profile.religion').equals(user.preferences.religion)
+      .execAsync()
+      .then((matches) => {
+        if (matches) { return matches; }
+        const err = new APIError('No such user exists!', httpStatus.NOT_FOUND);
+        return Promise.reject(err);
+      });
   }
 };
 

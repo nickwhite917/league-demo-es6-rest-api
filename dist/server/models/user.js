@@ -128,6 +128,29 @@ UserSchema.statics = {
     var limit = _ref$limit === undefined ? 50 : _ref$limit;
 
     return this.find().sort({ createdAt: -1 }).skip(skip).limit(limit).execAsync();
+  },
+
+
+  /**
+   * List users in descending order of 'createdAt' timestamp.
+   * @param {number} skip - Number of users to be skipped.
+   * @param {number} limit - Limit number of users to be returned.
+   * @returns {Promise<User[]>}
+   */
+  listMatches: function listMatches() {
+    var _ref2 = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+    var _ref2$limit = _ref2.limit;
+    var limit = _ref2$limit === undefined ? 5 : _ref2$limit;
+    var user = arguments[1];
+
+    return this.find().sort({ createdAt: -1 }).limit(limit).where('profile.age').gte(user.preferences.ageLow).where('_id').ne(user.id).where('profile.gender').equals(user.preferences.gender).where('profile.religion').equals(user.preferences.religion).execAsync().then(function (matches) {
+      if (matches) {
+        return matches;
+      }
+      var err = new _APIError2.default('No such user exists!', _httpStatus2.default.NOT_FOUND);
+      return _bluebird2.default.reject(err);
+    });
   }
 };
 
