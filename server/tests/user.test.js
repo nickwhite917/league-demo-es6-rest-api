@@ -36,8 +36,18 @@ describe('## User APIs', () => {
         .then(res => {
           expect(res.body.username).to.equal(user.username);
           expect(res.body.mobileNumber).to.equal(user.mobileNumber);
-          expect(res.body.profile).to.equal(user.profile);
-          expect(res.body.preferences).to.equal(user.preferences);
+
+          expect(res.body.profile.age).to.equal(user.profile.age);
+          expect(res.body.profile.gender).to.equal(user.profile.gender);
+          expect(res.body.profile.religion).to.equal(user.profile.religion);
+          expect(res.body.profile.location.toString()).to.equal(user.profile.location.toString());
+
+          expect(res.body.preferences.gender).to.equal(user.preferences.gender);
+          expect(res.body.preferences.ageHigh).to.equal(user.preferences.ageHigh);
+          expect(res.body.preferences.ageLow).to.equal(user.preferences.ageLow);
+          expect(res.body.preferences.religion).to.equal(user.preferences.religion);
+          expect(res.body.preferences.distance).to.equal(user.preferences.distance);
+
           user = res.body;
           done();
         });
@@ -52,8 +62,17 @@ describe('## User APIs', () => {
         .then(res => {
           expect(res.body.username).to.equal(user.username);
           expect(res.body.mobileNumber).to.equal(user.mobileNumber);
-          expect(res.body.profile).to.equal(user.profile);
-          expect(res.body.preferences).to.equal(user.preferences);
+          
+          expect(res.body.profile.age).to.equal(user.profile.age);
+          expect(res.body.profile.gender).to.equal(user.profile.gender);
+          expect(res.body.profile.religion).to.equal(user.profile.religion);
+          expect(res.body.profile.location.toString()).to.equal(user.profile.location.toString());
+
+          expect(res.body.preferences.gender).to.equal(user.preferences.gender);
+          expect(res.body.preferences.ageHigh).to.equal(user.preferences.ageHigh);
+          expect(res.body.preferences.ageLow).to.equal(user.preferences.ageLow);
+          expect(res.body.preferences.religion).to.equal(user.preferences.religion);
+          expect(res.body.preferences.distance).to.equal(user.preferences.distance);
           done();
         });
     });
@@ -79,8 +98,18 @@ describe('## User APIs', () => {
         .then(res => {
           expect(res.body.username).to.equal('Nick12345');
           expect(res.body.mobileNumber).to.equal(user.mobileNumber);
-          expect(res.body.profile).to.equal(user.profile);
-          expect(res.body.preferences).to.equal(user.preferences);
+          
+          expect(res.body.profile.age).to.equal(user.profile.age);
+          expect(res.body.profile.gender).to.equal(user.profile.gender);
+          expect(res.body.profile.religion).to.equal(user.profile.religion);
+          expect(res.body.profile.location.toString()).to.equal(user.profile.location.toString());
+
+          expect(res.body.preferences.gender).to.equal(user.preferences.gender);
+          expect(res.body.preferences.ageHigh).to.equal(user.preferences.ageHigh);
+          expect(res.body.preferences.ageLow).to.equal(user.preferences.ageLow);
+          expect(res.body.preferences.religion).to.equal(user.preferences.religion);
+          expect(res.body.preferences.distance).to.equal(user.preferences.distance);
+
           done();
         });
     });

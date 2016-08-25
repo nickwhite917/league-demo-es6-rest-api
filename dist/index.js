@@ -22,6 +22,9 @@ var _express2 = _interopRequireDefault(_express);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+_mongoose2.default.Promise = require('bluebird');
+assert.equal(query.exec().constructor, require('bluebird'));
+
 // promisify mongoose
 _bluebird2.default.promisifyAll(_mongoose2.default);
 
