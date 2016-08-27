@@ -10,7 +10,7 @@ export default {
         age: Joi.number().integer().min(18).max(100).required(),
         gender: Joi.string().required(),
         religion: Joi.string().required(),
-        location: Joi.object().required()
+        zip: Joi.number().integer().required()
       },
       preferences: {
         gender: Joi.string().required(),

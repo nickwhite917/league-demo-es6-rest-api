@@ -20,7 +20,7 @@ exports.default = {
         age: _joi2.default.number().integer().min(18).max(100).required(),
         gender: _joi2.default.string().required(),
         religion: _joi2.default.string().required(),
-        location: _joi2.default.object().required()
+        zip: _joi2.default.number().integer().required()
       },
       preferences: {
         gender: _joi2.default.string().required(),

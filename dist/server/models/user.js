@@ -20,6 +20,10 @@ var _APIError = require('../helpers/APIError');
 
 var _APIError2 = _interopRequireDefault(_APIError);
 
+var _zipcodes = require('zipcodes');
+
+var _zipcodes2 = _interopRequireDefault(_zipcodes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -48,8 +52,8 @@ var UserSchema = new _mongoose2.default.Schema({
       type: String,
       required: true
     },
-    location: {
-      type: {},
+    zip: {
+      type: Number,
       required: true
     }
   },
@@ -80,13 +84,6 @@ var UserSchema = new _mongoose2.default.Schema({
     default: Date.now
   }
 });
-
-/**
- * Add your
- * - pre-save hooks
- * - validations
- * - virtuals
- */
 
 /**
  * Methods
@@ -145,8 +142,14 @@ UserSchema.statics = {
     var user = arguments[1];
 
     return this.find().sort({ createdAt: -1 }).limit(limit).where('profile.age').gte(user.preferences.ageLow).where('_id').ne(user.id).where('profile.gender').equals(user.preferences.gender).where('profile.religion').equals(user.preferences.religion).execAsync().then(function (matches) {
-      if (matches) {
-        return matches;
+      var matchesInDistance = [];
+      matches.forEach(function (match) {
+        if (_zipcodes2.default.distance(match.profile.zip, user.profile.zip) <= user.preferences.distance) {
+          matchesInDistance.push(match);
+        }
+      });
+      if (matchesInDistance) {
+        return matchesInDistance;
       }
       var err = new _APIError2.default('No such user exists!', _httpStatus2.default.NOT_FOUND);
       return _bluebird2.default.reject(err);

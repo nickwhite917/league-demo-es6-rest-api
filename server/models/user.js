@@ -2,6 +2,7 @@ import Promise from 'bluebird';
 import mongoose from 'mongoose';
 import httpStatus from 'http-status';
 import APIError from '../helpers/APIError';
+import zipcodes from 'zipcodes';
 
 /**
  * User Schema
@@ -29,8 +30,8 @@ const UserSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    location: {
-      type: {},
+    zip: {
+      type: Number,
       required: true
     }
   },
@@ -62,13 +63,6 @@ const UserSchema = new mongoose.Schema({
   }
 });
 
-
-/**
- * Add your
- * - pre-save hooks
- * - validations
- * - virtuals
- */
 
 /**
  * Methods
@@ -116,7 +110,7 @@ UserSchema.statics = {
    * @param {number} limit - Limit number of users to be returned.
    * @returns {Promise<User[]>}
    */
-  listMatches({ limit = 5 } = { }, user) {
+  listMatches({ limit = 5 } = {}, user) {
     return this
       .find()
       .sort({ createdAt: -1 })
@@ -127,7 +121,14 @@ UserSchema.statics = {
       .where('profile.religion').equals(user.preferences.religion)
       .execAsync()
       .then((matches) => {
-        if (matches) { return matches; }
+        const matchesInDistance = [];
+        matches.forEach((match) => {
+          if (zipcodes.distance(match.profile.zip, user.profile.zip)
+            <= user.preferences.distance) {
+            matchesInDistance.push(match);
+          }
+        });
+        if (matchesInDistance) { return matchesInDistance; }
         const err = new APIError('No such user exists!', httpStatus.NOT_FOUND);
         return Promise.reject(err);
       });

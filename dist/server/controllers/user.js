@@ -44,7 +44,7 @@ function create(req, res, next) {
       age: req.body.profile.age,
       gender: req.body.profile.gender,
       religion: req.body.profile.religion,
-      location: req.body.profile.location
+      zip: req.body.profile.zip
     },
     preferences: {
       gender: req.body.preferences.gender,
@@ -77,7 +77,7 @@ function update(req, res, next) {
     age: req.body.profile.age,
     gender: req.body.profile.gender,
     religion: req.body.profile.religion,
-    location: req.body.profile.location
+    zip: req.body.profile.zip
   };
   user.preferences = {
     gender: req.body.preferences.gender,
