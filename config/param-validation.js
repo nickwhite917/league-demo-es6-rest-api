@@ -9,14 +9,12 @@ export default {
       profile: {
         age: Joi.number().integer().min(18).max(100).required(),
         gender: Joi.string().required(),
-        religion: Joi.string().required(),
         zip: Joi.number().integer().required()
       },
       preferences: {
         gender: Joi.string().required(),
         ageHigh: Joi.number().integer().min(18).max(100).required(),
         ageLow: Joi.number().integer().min(18).max(100).required(),
-        religion: Joi.string().required(),
         distance: Joi.number().integer().min(0).max(250).required()
       }
     }
