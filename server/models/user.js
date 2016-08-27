@@ -121,13 +121,16 @@ UserSchema.statics = {
       .where('profile.religion').equals(user.preferences.religion)
       .execAsync()
       .then((matches) => {
+        console.log(matches);
         const matchesInDistance = [];
-        matches.forEach((match) => {
-          if (zipcodes.distance(match.profile.zip, user.profile.zip)
-            <= user.preferences.distance) {
-            matchesInDistance.push(match);
-          }
-        });
+        if (matches) {
+          matches.forEach((match) => {
+            if (zipcodes.distance(match.profile.zip, user.profile.zip)
+              <= user.preferences.distance) {
+              matchesInDistance.push(match);
+            }
+          });
+        }
         if (matchesInDistance) { return matchesInDistance; }
         const err = new APIError('No such user exists!', httpStatus.NOT_FOUND);
         return Promise.reject(err);

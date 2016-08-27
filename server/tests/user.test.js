@@ -14,9 +14,7 @@ describe('## User APIs', () => {
       age: 23,
       gender: 'Male',
       religion: 'Jewish',
-      location: {
-        coordinates: [100, 150]
-      }
+      zip: 44143
     },
     preferences: {
       gender: 'Female',
@@ -40,7 +38,7 @@ describe('## User APIs', () => {
           expect(res.body.profile.age).to.equal(user.profile.age);
           expect(res.body.profile.gender).to.equal(user.profile.gender);
           expect(res.body.profile.religion).to.equal(user.profile.religion);
-          expect(res.body.profile.location.toString()).to.equal(user.profile.location.toString());
+          expect(res.body.profile.zip.toString()).to.equal(user.profile.zip.toString());
           // Preferences
           expect(res.body.preferences.gender).to.equal(user.preferences.gender);
           expect(res.body.preferences.ageHigh).to.equal(user.preferences.ageHigh);
@@ -66,7 +64,7 @@ describe('## User APIs', () => {
           expect(res.body.profile.age).to.equal(user.profile.age);
           expect(res.body.profile.gender).to.equal(user.profile.gender);
           expect(res.body.profile.religion).to.equal(user.profile.religion);
-          expect(res.body.profile.location.toString()).to.equal(user.profile.location.toString());
+          expect(res.body.profile.zip.toString()).to.equal(user.profile.zip.toString());
           // Preferences
           expect(res.body.preferences.gender).to.equal(user.preferences.gender);
           expect(res.body.preferences.ageHigh).to.equal(user.preferences.ageHigh);
@@ -102,7 +100,7 @@ describe('## User APIs', () => {
           expect(res.body.profile.age).to.equal(user.profile.age);
           expect(res.body.profile.gender).to.equal(user.profile.gender);
           expect(res.body.profile.religion).to.equal(user.profile.religion);
-          expect(res.body.profile.location.toString()).to.equal(user.profile.location.toString());
+          expect(res.body.profile.zip.toString()).to.equal(user.profile.zip.toString());
           // Preferences
           expect(res.body.preferences.gender).to.equal(user.preferences.gender);
           expect(res.body.preferences.ageHigh).to.equal(user.preferences.ageHigh);

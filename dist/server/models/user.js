@@ -142,12 +142,15 @@ UserSchema.statics = {
     var user = arguments[1];
 
     return this.find().sort({ createdAt: -1 }).limit(limit).where('profile.age').gte(user.preferences.ageLow).where('_id').ne(user.id).where('profile.gender').equals(user.preferences.gender).where('profile.religion').equals(user.preferences.religion).execAsync().then(function (matches) {
+      console.log(matches);
       var matchesInDistance = [];
-      matches.forEach(function (match) {
-        if (_zipcodes2.default.distance(match.profile.zip, user.profile.zip) <= user.preferences.distance) {
-          matchesInDistance.push(match);
-        }
-      });
+      if (matches) {
+        matches.forEach(function (match) {
+          if (_zipcodes2.default.distance(match.profile.zip, user.profile.zip) <= user.preferences.distance) {
+            matchesInDistance.push(match);
+          }
+        });
+      }
       if (matchesInDistance) {
         return matchesInDistance;
       }

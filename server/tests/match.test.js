@@ -35,16 +35,18 @@ describe('## Match APIs', () => {
             .get(`/api/match/${userNick._id}`)
             .expect(httpStatus.OK)
             .then(() => {
-              const matches = res.body;
-              matches.forEach(match => {
-                // Check age
-                expect(match.profile.age).to.be
-                  .within(userNick.preferences.ageLow, userNick.preferences.ageHigh);
-                // Check gender
-                expect(match.profile.gender).to.equal(userNick.preferences.gender);
-                // Check religion
-                expect(match.profile.religion).to.equal(userNick.preferences.religion);
-              });
+              const matches = res.body.matches;
+              if (matches) {
+                matches.forEach(match => {
+                  // Check age
+                  expect(match.profile.age).to.be
+                    .within(userNick.preferences.ageLow, userNick.preferences.ageHigh);
+                  // Check gender
+                  expect(match.profile.gender).to.equal(userNick.preferences.gender);
+                  // Check religion
+                  expect(match.profile.religion).to.equal(userNick.preferences.religion);
+                });
+              }
               done();
             });
         });

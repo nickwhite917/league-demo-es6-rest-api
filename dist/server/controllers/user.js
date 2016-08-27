@@ -43,15 +43,15 @@ function create(req, res, next) {
     profile: {
       age: req.body.profile.age,
       gender: req.body.profile.gender,
-      religion: req.body.profile.religion,
+      religion: req.body.profile.religion || 'Unspecified',
       zip: req.body.profile.zip
     },
     preferences: {
       gender: req.body.preferences.gender,
       ageHigh: req.body.preferences.ageHigh,
       ageLow: req.body.preferences.ageLow,
-      religion: req.body.preferences.religion,
-      distance: req.body.preferences.distance
+      religion: req.body.preferences.religion || 'Unspecified',
+      distance: req.body.preferences.distance || 20
     }
   });
 
@@ -76,15 +76,15 @@ function update(req, res, next) {
   user.profile = {
     age: req.body.profile.age,
     gender: req.body.profile.gender,
-    religion: req.body.profile.religion,
+    religion: req.body.profile.religion || 'Unspecified',
     zip: req.body.profile.zip
   };
   user.preferences = {
     gender: req.body.preferences.gender,
     ageHigh: req.body.preferences.ageHigh,
     ageLow: req.body.preferences.ageLow,
-    religion: req.body.preferences.religion,
-    distance: req.body.preferences.distance
+    religion: req.body.preferences.religion || 'Unspecified',
+    distance: req.body.preferences.distance || 20
   };
 
   user.saveAsync().then(function (savedUser) {
